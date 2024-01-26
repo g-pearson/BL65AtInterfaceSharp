@@ -62,7 +62,6 @@
     <Compile Include="Utils\HexUtils.cs" />
     <Compile Include="UART\ISerialPort.cs" />
     <Compile Include="GATT\NotificationEventArgs.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GAP\ScanType.cs" />
     <Compile Include="Utils\SearchDelegate.cs" />
