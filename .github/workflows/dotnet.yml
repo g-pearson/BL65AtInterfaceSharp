@@ -1,0 +1,31 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: build-and-test-workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v4.1.1
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3.1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.2.0
+
+    - name: Restore NuGet packages
+      run: nuget restore BL654InterfaceSharp.sln
+
+    - name: Build BL654InterfaceSharp
+      run: msbuild BL654InterfaceSharp.sln -property:Configuration=Debug -property:platform="Any CPU"
+      
+    #- name: Run Tests
+    #  run: vstest.console.exe 
